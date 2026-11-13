@@ -1,0 +1,12 @@
+# 3D renderings and Fig. 4 / Fig. 6 assets (paper/scripts/render3d), macOS, Python 3.12.9.
+pyvista==0.49.2
+vtk==9.7.2
+matplotlib==3.11.2
+numpy==2.5.4
+scipy==1.18.1
+scikit-image==0.26.0
+tifffile==2026.11.8
+imageio==2.38.1
+pillow==13.0.0
+colorspacious==1.1.2
+networkx==3.7

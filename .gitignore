@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Data, weights and outputs are archived separately (DOI TBD) and must not be committed
+data/
+results/
+models/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.tif
+*.tiff
+*.h5
+*.zarr/
+*.tar
+*.zip
+*.log
+*.out
+*.bak
+
+# Figure inputs and outputs (deposited as source data)
+paper/data_snapshot/
+paper/scripts/figs/localdata/
+paper/scripts/render3d/export/
+paper/scripts/render3d/out/
+paper/scripts/render3d/vendor/
+paper/figures/arch/assets*/
+paper/figures/supp/out/
+paper/figures/supp/tiles/
+paper/figures/final/
+*.pdf
+*.png
+
+# Local configuration
+config.json
+.env

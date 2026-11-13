@@ -1,0 +1,116 @@
+{
+ "bbbc050": [
+  "train_Emb11_t001",
+  "train_Emb11_t051",
+  "train_Emb11_t101",
+  "train_Emb11_t151",
+  "train_Emb11_t201",
+  "train_Emb11_t251",
+  "train_Emb11_t301",
+  "train_Emb11_t351",
+  "train_Emb11_t401",
+  "train_Emb11_t451",
+  "train_Emb11_t501"
+ ],
+ "blastospim": [
+  "BlastoSPIM1_val_F19_066_image_0001",
+  "BlastoSPIM1_val_F19_067_image_0001",
+  "BlastoSPIM1_val_F26_002_image_0001",
+  "BlastoSPIM1_val_F26_005_image_0001",
+  "BlastoSPIM1_val_F27_001_image_0001",
+  "BlastoSPIM1_val_F28_000_image_0001",
+  "BlastoSPIM1_val_F28_007_image_0001",
+  "BlastoSPIM1_val_F30_000_image_0001",
+  "BlastoSPIM1_val_F30_001_image_0001",
+  "BlastoSPIM1_val_F30_005_image_0001",
+  "BlastoSPIM1_val_F30_007_image_0001",
+  "BlastoSPIM1_val_F32_052_image_0001",
+  "BlastoSPIM1_val_F33_061_image_0001",
+  "BlastoSPIM1_val_F33_070_image_0001",
+  "BlastoSPIM1_val_F38_105_image_0001",
+  "BlastoSPIM1_val_F38_109_image_0001",
+  "BlastoSPIM1_val_F40_138_image_0001",
+  "BlastoSPIM1_val_F41_053_image_0001",
+  "BlastoSPIM1_val_F42_065_image_0001",
+  "BlastoSPIM1_val_F44_094_image_0001",
+  "BlastoSPIM1_val_F46_107_image_0001",
+  "BlastoSPIM1_val_F49_146_image_0001",
+  "BlastoSPIM1_val_F55_186_image_0001",
+  "BlastoSPIM1_val_M6_011_image_0001",
+  "BlastoSPIM1_val_M6_015_image_0001",
+  "BlastoSPIM1_val_M6_016_image_0001",
+  "BlastoSPIM1_val_M6_018_image_0001",
+  "BlastoSPIM1_val_M7_002_image_0001",
+  "BlastoSPIM1_val_T2_006_image_0001",
+  "BlastoSPIM1_val_T2_009_image_0001",
+  "BlastoSPIM1_val_T2_015_image_0001",
+  "BlastoSPIM2_val_Blast_012_image_0001",
+  "BlastoSPIM2_val_Blast_022_image_0001",
+  "BlastoSPIM2_val_Blast_028_image_0001",
+  "BlastoSPIM2_val_Blast_040_image_0001"
+ ],
+ "celegans": [
+  "cnd1threeL1_1229063",
+  "hlh1fourL1_0417071",
+  "pha4A7L1_1213062"
+ ],
+ "cellos": [
+  "EGFP_d4_flt32_28",
+  "Hoechst_d4_flt32_130",
+  "Hoechst_d4_flt32_50",
+  "mCherry_d4_flt32_39"
+ ],
+ "gonuclear": [
+  "1139_clear",
+  "1139_noisy"
+ ],
+ "mesospim": [
+  "c3"
+ ],
+ "mouse_embryo": [
+  "E13_Ab1",
+  "E2_Ab2",
+  "E5_Ab2"
+ ],
+ "nis3d": [
+  "MusMusculus_1_xL75"
+ ],
+ "nisnet_zf": [
+  "Embryo1_0256_0512",
+  "Embryo1_0384_0768",
+  "Embryo1_0640_0256",
+  "Embryo1_0768_0512",
+  "Embryo2_0256_0384",
+  "Embryo2_0384_0512",
+  "Embryo2_0512_0640"
+ ],
+ "nucverse3d": [
+  "2_livernuclei_20221006_13_Control_8w_Periportal",
+  "7_liver_hcc_dataset_20220901_9_STAM_16w_adyacente"
+ ],
+ "parhyale": [
+  "tp21"
+ ],
+ "purdue": [
+  "Diabetic_Biopsy_Human_Spectral_1-3100-1700",
+  "Diabetic_Biopsy_Human_Spectral_3-1728_1100",
+  "Kidney_Cortex_Human_Spectral_1-1600-2400"
+ ],
+ "tapenade": [
+  "val_000027",
+  "val_000031",
+  "val_000036",
+  "val_000040",
+  "val_000044",
+  "val_000048",
+  "val_000053",
+  "val_000057",
+  "val_000061",
+  "val_000066",
+  "val_000070",
+  "val_000074",
+  "val_000086",
+  "val_000110",
+  "val_000129"
+ ]
+}

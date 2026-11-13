@@ -1,0 +1,74 @@
+{
+ "name": "NucSeg3D unified palette v2 (NPG / ggsci 'npg' base), 2026-11-10",
+ "source": "ggsci npg: #E64B35 #4DBBD5 #00A087 #3C5488 #F39B7F #8491B4 #91D1C2 #DC0000 #7E6148 #B09C85",
+ "text": "#1d1d1f",
+ "muted": "#6b6b70",
+ "rule": "#e2e2e0",
+ "shell": "#9AA3B5",
+ "shell_opacity": 0.16,
+ "bg": "#ffffff",
+ "tile_light": [
+  "#f7f7f5",
+  "#ffffff"
+ ],
+ "tile_dark": [
+  "#1d1f24",
+  "#2b2f37"
+ ],
+ "models": {
+  "S1": "#E64B35",
+  "S1_dark": "#B83A28",
+  "2D": "#4DBBD5",
+  "2D_dark": "#2B8BA3",
+  "base": "#8491B4",
+  "nnunet": "#00A087",
+  "stardist3d": "#3C5488",
+  "useg": "#91D1C2",
+  "tools": "#7E6148",
+  "tapenade": "#7E6148",
+  "anystar": "#B09C85",
+  "cellos": "#F39B7F"
+ },
+ "gt_outline": "#1d1d1f",
+ "errors": {
+  "match": "#D5D8DC",
+  "boundary": "#F39B7F",
+  "split": "#7E6148",
+  "merge": "#3C5488",
+  "other": "#4d4d52",
+  "miss": "#00A087"
+ },
+ "error_names": {
+  "match": "matched",
+  "boundary": "boundary error",
+  "split": "split",
+  "merge": "merge",
+  "other": "false positive",
+  "miss": "missed (ghost)"
+ },
+ "diverging": [
+  "#3C5488",
+  "#ffffff",
+  "#E64B35"
+ ],
+ "qualitative_instances": [
+  "#8FA3C9",
+  "#E9A99A",
+  "#8CC7BB",
+  "#B9B2D3",
+  "#D9C3A6",
+  "#9FD3E2",
+  "#C8A49B",
+  "#A9BFA0",
+  "#E3C59A",
+  "#B3B7C9"
+ ],
+ "rules": [
+  "within a 3D render panel model identity is shown only by labels/frames; error colours are fixed",
+  "titles of non-S1 models in multi-model strips use neutral text so error and model colours never compete",
+  "GT outlines are near-black (#1d1d1f) everywhere",
+  "on raw-image overlays (dark backgrounds) GT outlines are white (#ffffff); elsewhere near-black"
+ ],
+ "notes_cvd": "checked with cvd_check.py (palette_cvd.json); model pairs below CAM02-UCS 15 under CVD are always also separated by marker shape or panel position",
+ "gt_outline_on_image": "#ffffff"
+}

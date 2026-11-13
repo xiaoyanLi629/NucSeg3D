@@ -1,0 +1,480 @@
+{
+ "rule": "$NUCSEG3D_SCRATCH/nc/figs/ortho/RULE.md",
+ "runs": {
+  "S1": "07992b55-0982-4116-b065-b34859c9a80b",
+  "2D": "81116913-06c5-47a3-9dcc-ab7d64615e68",
+  "base": "b5973303-f479-41fe-be14-f80d7c2fbb1a"
+ },
+ "volumes": {
+  "bbbc050": {
+   "id": "test_Emb2_t401",
+   "n_vol": 44,
+   "median_diff": 0.0,
+   "diff": 0.0,
+   "ratio": 1.24,
+   "shape": [
+    51,
+    116,
+    113
+   ],
+   "f1": {
+    "S1": 1.0,
+    "2D": 1.0,
+    "base": 1.0
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/bbbc050__test_Emb2_t401.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/bbbc050__test_Emb2_t401.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/bbbc050__test_Emb2_t401.npz"
+   },
+   "n_pred_rec": {
+    "S1": 24,
+    "2D": 24,
+    "base": 24
+   },
+   "n_gt": 24,
+   "n_tied": 35
+  },
+  "blastospim": {
+   "id": "BlastoSPIM1_test_modSNR_F40_136_image_0001",
+   "n_vol": 98,
+   "median_diff": 0.0,
+   "diff": 0.0,
+   "ratio": 9.615384615384615,
+   "shape": [
+    101,
+    384,
+    384
+   ],
+   "f1": {
+    "S1": 0.9915966386554622,
+    "2D": 0.9915966386554622,
+    "base": 0.9915966386554622
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/blastospim__BlastoSPIM1_test_modSNR_F40_136_image_0001.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/blastospim__BlastoSPIM1_test_modSNR_F40_136_image_0001.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/blastospim__BlastoSPIM1_test_modSNR_F40_136_image_0001.npz"
+   },
+   "n_pred_rec": {
+    "S1": 59,
+    "2D": 59,
+    "base": 59
+   },
+   "n_gt": 60,
+   "n_tied": 70
+  },
+  "celegans": {
+   "id": "mir61L1_1228062",
+   "n_vol": 7,
+   "median_diff": 0.01824636201866192,
+   "diff": 0.01824636201866192,
+   "ratio": 1.0517241379310345,
+   "shape": [
+    140,
+    140,
+    384
+   ],
+   "f1": {
+    "S1": 0.7967698519515478,
+    "2D": 0.7785234899328859,
+    "base": 0.7706666666666667
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/celegans__mir61L1_1228062.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/celegans__mir61L1_1228062.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/celegans__mir61L1_1228062.npz"
+   },
+   "n_pred_rec": {
+    "S1": 379,
+    "2D": 381,
+    "base": 386
+   },
+   "n_gt": 364,
+   "n_tied": 1
+  },
+  "cellos": {
+   "id": "mCherry_d4_flt32_6",
+   "n_vol": 6,
+   "median_diff": 0.05621499843132438,
+   "diff": 0.0459653503980022,
+   "ratio": 8.361204013377927,
+   "shape": [
+    16,
+    296,
+    334
+   ],
+   "f1": {
+    "S1": 0.7785234899328859,
+    "2D": 0.7325581395348837,
+    "base": 0.6845637583892618
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -6.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/cellos__mCherry_d4_flt32_6.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/cellos__mCherry_d4_flt32_6.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/cellos__mCherry_d4_flt32_6.npz"
+   },
+   "n_pred_rec": {
+    "S1": 68,
+    "2D": 91,
+    "base": 68
+   },
+   "n_gt": 81,
+   "n_tied": 2
+  },
+  "gonuclear": {
+   "id": "1170_clear",
+   "n_vol": 2,
+   "median_diff": 0.03440561298242384,
+   "diff": 0.0068728522336769515,
+   "ratio": 2.1892018564769016,
+   "shape": [
+    241,
+    384,
+    384
+   ],
+   "f1": {
+    "S1": 0.9168384879725086,
+    "2D": 0.9099656357388316,
+    "base": 0.9417344173441734
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/gonuclear__1170_clear.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/gonuclear__1170_clear.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/gonuclear__1170_clear.npz"
+   },
+   "n_pred_rec": {
+    "S1": 702,
+    "2D": 702,
+    "base": 723
+   },
+   "n_gt": 753,
+   "n_tied": 2
+  },
+  "mesospim": {
+   "id": "visual",
+   "n_vol": 1,
+   "median_diff": -0.09132150063379685,
+   "diff": -0.09132150063379685,
+   "ratio": 0.4752851711026616,
+   "shape": [
+    329,
+    127,
+    214
+   ],
+   "f1": {
+    "S1": 0.691131498470948,
+    "2D": 0.7824529991047449,
+    "base": 0.12342569269521411
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -6.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/mesospim__visual.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/mesospim__visual.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/mesospim__visual.npz"
+   },
+   "n_pred_rec": {
+    "S1": 431,
+    "2D": 567,
+    "base": 244
+   },
+   "n_gt": 550,
+   "n_tied": 1
+  },
+  "mouse_embryo": {
+   "id": "E15_Ab2",
+   "n_vol": 13,
+   "median_diff": 0.03581729734383754,
+   "diff": 0.03581729734383754,
+   "ratio": 4.651162790697675,
+   "shape": [
+    112,
+    384,
+    384
+   ],
+   "f1": {
+    "S1": 0.9272030651340997,
+    "2D": 0.8913857677902621,
+    "base": 0.21212121212121213
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/mouse_embryo__E15_Ab2.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/mouse_embryo__E15_Ab2.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/mouse_embryo__E15_Ab2.npz"
+   },
+   "n_pred_rec": {
+    "S1": 132,
+    "2D": 138,
+    "base": 135
+   },
+   "n_gt": 129,
+   "n_tied": 1
+  },
+  "nis3d": {
+   "id": "Zebrafish_2_xR25",
+   "n_vol": 6,
+   "median_diff": 0.05882226008305802,
+   "diff": 0.023981706296048233,
+   "ratio": 1.0,
+   "shape": [
+    201,
+    333,
+    84
+   ],
+   "f1": {
+    "S1": 0.43804420629604823,
+    "2D": 0.4140625,
+    "base": 0.043478260869565216
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/nis3d__Zebrafish_2_xR25.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/nis3d__Zebrafish_2_xR25.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/nis3d__Zebrafish_2_xR25.npz"
+   },
+   "n_pred_rec": {
+    "S1": 610,
+    "2D": 653,
+    "base": 267
+   },
+   "n_gt": 883,
+   "n_tied": 2
+  },
+  "nisnet_zf": {
+   "id": "Embryo3_0256_0128",
+   "n_vol": 16,
+   "median_diff": 0.004203658292154244,
+   "diff": 0.004754236638294551,
+   "ratio": 2.18,
+   "shape": [
+    122,
+    256,
+    256
+   ],
+   "f1": {
+    "S1": 0.8571428571428571,
+    "2D": 0.8523886205045625,
+    "base": 0.7704741379310345
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/nisnet_zf__Embryo3_0256_0128.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/nisnet_zf__Embryo3_0256_0128.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/nisnet_zf__Embryo3_0256_0128.npz"
+   },
+   "n_pred_rec": {
+    "S1": 934,
+    "2D": 935,
+    "base": 928
+   },
+   "n_gt": 928,
+   "n_tied": 2
+  },
+  "nucverse3d": {
+   "id": "2_livernuclei_20221025_30_Control_12w_Central",
+   "n_vol": 5,
+   "median_diff": 0.006820094036129709,
+   "diff": 0.006820094036129709,
+   "ratio": 1.0,
+   "shape": [
+    280,
+    320,
+    320
+   ],
+   "f1": {
+    "S1": 0.9377777777777778,
+    "2D": 0.9309576837416481,
+    "base": 0.9175946547884187
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/nucverse3d__2_livernuclei_20221025_30_Control_12w_Central.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/nucverse3d__2_livernuclei_20221025_30_Control_12w_Central.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/nucverse3d__2_livernuclei_20221025_30_Control_12w_Central.npz"
+   },
+   "n_pred_rec": {
+    "S1": 218,
+    "2D": 217,
+    "base": 217
+   },
+   "n_gt": 232,
+   "n_tied": 1
+  },
+  "parhyale": {
+   "id": "tp50",
+   "n_vol": 2,
+   "median_diff": 0.04158715325269324,
+   "diff": 0.01692299025407029,
+   "ratio": 7.805274566473988,
+   "shape": [
+    34,
+    384,
+    384
+   ],
+   "f1": {
+    "S1": 0.7972508591065293,
+    "2D": 0.780327868852459,
+    "base": 0.38235294117647056
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/parhyale__tp50.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/parhyale__tp50.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/parhyale__tp50.npz"
+   },
+   "n_pred_rec": {
+    "S1": 267,
+    "2D": 295,
+    "base": 229
+   },
+   "n_gt": 315,
+   "n_tied": 2
+  },
+  "purdue": {
+   "id": "Kidney_Human_Nephrectomy_1_1400_1400",
+   "n_vol": 6,
+   "median_diff": -0.04487011178740502,
+   "diff": -0.03909774436090224,
+   "ratio": 1.0,
+   "shape": [
+    35,
+    128,
+    128
+   ],
+   "f1": {
+    "S1": 0.17142857142857143,
+    "2D": 0.21052631578947367,
+    "base": 0.14009661835748793
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/purdue__Kidney_Human_Nephrectomy_1_1400_1400.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/purdue__Kidney_Human_Nephrectomy_1_1400_1400.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/purdue__Kidney_Human_Nephrectomy_1_1400_1400.npz"
+   },
+   "n_pred_rec": {
+    "S1": 240,
+    "2D": 248,
+    "base": 339
+   },
+   "n_gt": 75,
+   "n_tied": 2
+  },
+  "tapenade": {
+   "id": "annotator2_square13",
+   "n_vol": 21,
+   "median_diff": -0.017857944092968925,
+   "diff": -0.017857944092968925,
+   "ratio": 1.0,
+   "shape": [
+    90,
+    192,
+    192
+   ],
+   "f1": {
+    "S1": 0.8593350383631714,
+    "2D": 0.8771929824561403,
+    "base": 0.865
+   },
+   "thr": {
+    "S1": -2.0,
+    "2D": -2.0,
+    "base": -2.0
+   },
+   "npz": {
+    "S1": "$NUCSEG3D_ROOT/results/orx_07992b55-0982-4116-b065-b34859c9a80b_thr_eval/masks/tapenade__annotator2_square13.npz",
+    "2D": "$NUCSEG3D_ROOT/results/orx_81116913-06c5-47a3-9dcc-ab7d64615e68_thr_eval/masks/tapenade__annotator2_square13.npz",
+    "base": "$NUCSEG3D_ROOT/results/orx_b5973303-f479-41fe-be14-f80d7c2fbb1a_thr_eval/masks/tapenade__annotator2_square13.npz"
+   },
+   "n_pred_rec": {
+    "S1": 184,
+    "2D": 192,
+    "base": 193
+   },
+   "n_gt": 207,
+   "n_tied": 1
+  }
+ },
+ "pool_sorted_by_ratio": [
+  "nis3d",
+  "nucverse3d",
+  "purdue",
+  "tapenade",
+  "celegans",
+  "bbbc050",
+  "nisnet_zf",
+  "gonuclear",
+  "mouse_embryo",
+  "parhyale",
+  "cellos",
+  "blastospim"
+ ],
+ "positions": [
+  0,
+  3,
+  6,
+  8,
+  11
+ ],
+ "main": [
+  "nis3d",
+  "tapenade",
+  "nisnet_zf",
+  "mouse_embryo",
+  "blastospim"
+ ]
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplementary Data — interactive 3D comparison of nuclear segmentations</title>
+<style>
+:root { --bg:#f7f7f5; --card:#ffffff; --fg:#1d1d1f; --muted:#6b6b70; --accent:#3C5488; --good:#1f8a4c; --warn:#b26a00;
+        --bad:#c0392b; --canvas:#f0f0ee; --line:#e2e2de; }
+@media (prefers-color-scheme: dark) { :root { --bg:#161618; --card:#1f1f22; --fg:#ececef; --muted:#a0a0a8; --canvas:#26262a; --line:#333338; } }
+:root[data-theme="dark"] { --bg:#161618; --card:#1f1f22; --fg:#ececef; --muted:#a0a0a8; --canvas:#26262a; --line:#333338; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.5 ui-sans-serif, -apple-system, "Helvetica Neue", Arial, sans-serif; }
+main { max-width:1280px; margin:0 auto; padding:24px 20px 40px; }
+h1 { font-size:20px; margin:0 0 4px; } p.sub { color:var(--muted); margin:0 0 16px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; }
+.tabs button { border:1px solid var(--line); background:var(--card); color:var(--fg); border-radius:999px; padding:5px 14px; margin:0 6px 6px 0; cursor:pointer; font:inherit; }
+.tabs button.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+.ctrl { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; margin:6px 0 10px; color:var(--muted); font-size:13px; }
+.ctrl select, .ctrl input { font:inherit; }
+.panes { display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; }
+@media (max-width: 760px) { .panes { grid-template-columns:1fr; } }
+.pane { position:relative; background:var(--canvas); border-radius:10px; overflow:hidden; aspect-ratio:1/1; }
+.pane canvas { width:100%; height:100%; display:block; }
+.pane .lbl { position:absolute; left:10px; top:8px; font-weight:600; font-size:13px; }
+.pane .f1 { position:absolute; right:10px; bottom:8px; color:var(--muted); font-size:12px; font-variant-numeric:tabular-nums; }
+.pane select { position:absolute; right:8px; top:6px; font-size:12px; }
+.legend { display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:10px; font-size:12.5px; color:var(--muted); }
+.sw { display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:6px; vertical-align:-1px; }
+.note { color:var(--muted); font-size:12.5px; margin-top:8px; }
+.loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+<main>
+<h1>Interactive 3D comparison of nuclear segmentations</h1>
+<p class="sub">Test volumes chosen by the pre-specified median rule (the volume whose S1 − 2D F1@0.5 is closest to the dataset median; seed 0, ground-truth diameter). Drag to rotate, scroll to zoom; the three panes stay synchronized. Works offline.</p>
+<div class="card">
+  <div class="tabs" id="tabs"></div>
+  <div class="ctrl">
+    <label>Colour <select id="mode"><option value="err">Error class vs ground truth</option><option value="inst">One colour per nucleus</option></select></label>
+    <label><input type="checkbox" id="shell" checked> Specimen outline</label>
+    <label><input type="checkbox" id="ghost" checked> Missed nuclei</label>
+    <label><input type="checkbox" id="spin"> Rotate</label>
+    <label>Cut-away along z <input type="range" id="clip" min="0" max="100" value="100"></label>
+  </div>
+  <div class="panes" id="panes"></div>
+  <div class="legend" id="legend"></div>
+  <div class="note" id="note"></div>
+</div>
+<p class="note">Meshes are smoothed surfaces of the evaluated label volumes (final masks exactly as scored, including the rule-T threshold and the removal of fragments smaller than 0.15 of the expected nuclear volume). Error classes are assigned per predicted nucleus: matched (IoU ≥ 0.5 with a ground-truth nucleus), merge (covers more than half of two or more ground-truth nuclei), split (one of several predictions that each cover at least 15% of an unmatched ground-truth nucleus), boundary error (best IoU between 0.1 and 0.5), false positive (otherwise). Missed ground-truth nuclei (best IoU &lt; 0.1) are shown as translucent ghosts. The z axis is shown at its physical aspect ratio.</p>
+</main>
+<script>/*THREE*/</script>
+<script>/*ORBIT*/</script>
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+(function () {
+  const DATA = JSON.parse(document.getElementById('data').textContent), ORDER = /*ORDER*/;
+  const hex = h => { const c = new THREE.Color(h); return [c.r, c.g, c.b]; };
+  const PAL = /*PAL*/;   // paper/figures/palette.json (NPG), same colours as the manuscript figures
+  const CLS_COL = ['match', 'boundary', 'split', 'merge', 'other'].map(k => hex(PAL.errors[k]));   // matched, boundary, split, merge, false positive
+  const MISS = hex(PAL.errors.miss), SHELLC = hex(PAL.shell);
+  const CLS_NAME = ['matched', 'boundary error', 'split', 'merge', 'false positive'];
+  const QUAL = PAL.qualitative_instances.map(hex);
+  const $ = id => document.getElementById(id);
+  const cache = {};
+  let cur = null;
+  async function decode(m) {
+    const bin = Uint8Array.from(atob(m.data), c => c.charCodeAt(0));
+    const buf = await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+    let o = 0; const take = (T, n) => { const a = new T(buf, o, n); o += n * T.BYTES_PER_ELEMENT; o += (4 - o % 4) % 4; return a; };
+    return {q: take(Uint16Array, m.nv * 3), f: take(Uint32Array, m.nf * 3), lab: take(Uint32Array, m.nf)};
+  }
+  async function geom(key, m, box) {
+    if (cache[key]) return cache[key];
+    const d = await decode(m), pos = new Float32Array(m.nf * 9), col = new Float32Array(m.nf * 9);
+    const sx = box[2] / 65535, sy = box[1] / 65535, sz = box[0] / 65535;
+    for (let t = 0; t < m.nf; t++) for (let k = 0; k < 3; k++) {
+      const v = d.f[t * 3 + k], o = (t * 3 + k) * 3;
+      pos[o] = d.q[v * 3] * sx - box[2] / 2; pos[o + 1] = -(d.q[v * 3 + 1] * sy - box[1] / 2); pos[o + 2] = d.q[v * 3 + 2] * sz - box[0] / 2;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    g.computeVertexNormals();
+    return (cache[key] = {g, lab: d.lab, m});
+  }
+  function paint(res, f) {
+    const col = res.g.getAttribute('color').array;
+    for (let t = 0; t < res.m.nf; t++) { const c = f(res.lab[t]); for (let k = 0; k < 3; k++) col.set(c, (t * 3 + k) * 3); }
+    res.g.getAttribute('color').needsUpdate = true;
+  }
+  const clip = new THREE.Plane(new THREE.Vector3(0, 0, -1), 1e5);
+  const V = [];
+  for (let i = 0; i < 3; i++) {
+    const pane = document.createElement('div'); pane.className = 'pane';
+    pane.innerHTML = `<canvas></canvas><div class="lbl"></div><select></select><div class="f1"></div><div class="loading">Loading…</div>`;
+    $('panes').appendChild(pane);
+    const canvas = pane.querySelector('canvas');
+    const r = new THREE.WebGLRenderer({canvas, antialias: true, alpha: true}); r.setPixelRatio(Math.min(window.devicePixelRatio, 2)); r.localClippingEnabled = true;
+    const scene = new THREE.Scene(); scene.add(new THREE.HemisphereLight(0xffffff, 0x444455, 0.9));
+    const dl = new THREE.DirectionalLight(0xffffff, 0.6); dl.position.set(1, 1.5, 2); scene.add(dl);
+    const cam = new THREE.PerspectiveCamera(32, 1, 0.1, 1e5), ctl = new THREE.OrbitControls(cam, canvas); ctl.enableDamping = true;
+    V.push({pane, canvas, r, scene, cam, ctl, objs: [], sel: pane.querySelector('select')});
+  }
+  let syncing = false;
+  V.forEach((a, i) => a.ctl.addEventListener('change', () => { if (syncing) return; syncing = true;
+    V.forEach((b, j) => { if (i === j) return; b.cam.position.copy(a.cam.position); b.cam.quaternion.copy(a.cam.quaternion); b.ctl.target.copy(a.ctl.target); b.cam.updateProjectionMatrix(); });
+    syncing = false; }));
+  function fit() { const b = cur.box, rad = Math.hypot(b[0], b[1], b[2]) * 0.5;
+    for (const v of V) { v.cam.position.set(rad * 1.25, -rad * 1.55, rad * 1.35); v.cam.up.set(0, 0, 1); v.ctl.target.set(0, 0, 0); v.cam.near = rad / 100; v.cam.far = rad * 20; v.cam.updateProjectionMatrix(); v.ctl.update(); } }
+  function applyClip() { if (!cur) return; const h = cur.box[0]; clip.constant = -h / 2 + h * (+$('clip').value / 100) + 1e-3; }
+  const sw = c => `<span class="sw" style="background:rgb(${c.map(x => Math.round(x * 255))})"></span>`;
+  async function render() {
+    const mode = $('mode').value, gt = cur.models[0];
+    // decode all meshes needed by the three panes in parallel
+    await Promise.all([geom(cur.key + ':shell', cur.shell, cur.box), geom(cur.key + ':0', gt, cur.box), ...V.map(v => geom(cur.key + ':' + v.sel.value, cur.models[+v.sel.value], cur.box))]);
+    for (const v of V) {
+      v.objs.forEach(o => v.scene.remove(o)); v.objs = [];
+      v.pane.querySelector('.loading').style.display = 'flex';
+      const mi = +v.sel.value, m = cur.models[mi];
+      if ($('shell').checked) {
+        const s = await geom(cur.key + ':shell', cur.shell, cur.box);
+        paint(s, () => SHELLC);
+        const o = new THREE.Mesh(s.g, new THREE.MeshStandardMaterial({vertexColors: true, transparent: true, opacity: 0.16, depthWrite: false, clippingPlanes: [clip], side: THREE.DoubleSide}));
+        o.renderOrder = 2; v.scene.add(o); v.objs.push(o);
+      }
+      const n = await geom(cur.key + ':' + mi, m, cur.box);
+      if (m.key === 'gt' || mode === 'inst') paint(n, id => QUAL[id % QUAL.length]);
+      else paint(n, id => CLS_COL[m.cls[id] ?? 4]);
+      const o = new THREE.Mesh(n.g, new THREE.MeshStandardMaterial({vertexColors: true, roughness: 0.45, clippingPlanes: [clip], side: THREE.DoubleSide}));
+      v.scene.add(o); v.objs.push(o);
+      if (m.key !== 'gt' && $('ghost').checked && m.missed.length) {
+        const gg = await geom(cur.key + ':0', gt, cur.box), miss = new Set(m.missed);
+        // ghost: a second mesh of the GT surface where only missed nuclei are opaque enough to see
+        const g2 = gg.g.clone(), col = g2.getAttribute('color').array, alpha = new Float32Array(gg.m.nf * 3);
+        for (let t = 0; t < gg.m.nf; t++) { const on = miss.has(gg.lab[t]); for (let k = 0; k < 3; k++) { col.set(MISS, (t * 3 + k) * 3); alpha[t * 3 + k] = on ? 1 : 0; } }
+        g2.setAttribute('vis', new THREE.BufferAttribute(alpha, 1));
+        const idx = []; for (let t = 0; t < gg.m.nf; t++) if (miss.has(gg.lab[t])) idx.push(t * 3, t * 3 + 1, t * 3 + 2);
+        g2.setIndex(idx);
+        const go = new THREE.Mesh(g2, new THREE.MeshStandardMaterial({vertexColors: true, transparent: true, opacity: 0.35, depthWrite: false, clippingPlanes: [clip], side: THREE.DoubleSide}));
+        go.renderOrder = 1; v.scene.add(go); v.objs.push(go);
+      }
+      v.pane.querySelector('.lbl').textContent = m.name;
+      v.pane.querySelector('.f1').textContent = m.f1 != null ? `F1@0.5 ${m.f1.toFixed(3)}  ·  ${m.n} nuclei` : `${m.n} nuclei`;
+      v.pane.querySelector('.loading').style.display = 'none';
+    }
+    $('legend').innerHTML = mode === 'err'
+      ? CLS_NAME.map((t, i) => `<span>${sw(CLS_COL[i])}${t}</span>`).join('') + `<span>${sw(MISS)}missed ground-truth nucleus</span><span>${sw(SHELLC)}specimen outline</span><span>ground truth: one colour per nucleus</span>`
+      : '<span>One colour per nucleus (colours are not matched across panes)</span>';
+    $('note').textContent = `${cur.name}, test volume ${cur.id}; z/xy ${cur.ratio.toFixed(2)}; extent ${cur.box.map(x => x.toFixed(0)).join(' × ')} (z × y × x, lateral pixels).`;
+  }
+  async function show(key) {
+    cur = DATA[key];
+    document.querySelectorAll('#tabs button').forEach(b => b.classList.toggle('on', b.dataset.k === key));
+    const opts = cur.models.map((m, i) => `<option value="${i}">${m.name}</option>`).join('');
+    V.forEach((v, i) => { v.sel.innerHTML = opts; v.sel.value = [0, 1, 2][i]; });
+    fit(); applyClip(); await render();
+  }
+  $('tabs').innerHTML = ORDER.map(k => `<button data-k="${k}">${DATA[k].name}</button>`).join('');
+  $('tabs').addEventListener('click', e => { if (e.target.dataset.k) show(e.target.dataset.k); });
+  for (const id of ['mode', 'shell', 'ghost']) $(id).addEventListener('change', render);
+  V.forEach(v => v.sel.addEventListener('change', render));
+  $('clip').addEventListener('input', applyClip);
+  function loop() {
+    requestAnimationFrame(loop);
+    if ($('spin').checked && cur) { const t = V[0].ctl.target, q = V[0].cam.position.clone().sub(t); q.applyAxisAngle(new THREE.Vector3(0, 0, 1), 0.004); V[0].cam.position.copy(t).add(q); V[0].cam.lookAt(t); V[0].ctl.update(); V[0].ctl.dispatchEvent({type: 'change'}); }
+    for (const v of V) {
+      const w = v.canvas.clientWidth, h = v.canvas.clientHeight;
+      if (v.canvas.width !== Math.round(w * v.r.getPixelRatio()) || v.canvas.height !== Math.round(h * v.r.getPixelRatio())) { v.r.setSize(w, h, false); v.cam.aspect = w / h; v.cam.updateProjectionMatrix(); }
+      v.ctl.update(); v.r.render(v.scene, v.cam);
+    }
+  }
+  if (!('DecompressionStream' in window)) { document.querySelectorAll('.loading').forEach(e => e.textContent = 'This browser cannot decompress the data; please use a recent Chrome, Edge, Firefox or Safari.'); return; }
+  show(ORDER[0]); loop();
+})();
+</script>
+</body>
+</html>

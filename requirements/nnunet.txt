@@ -1,0 +1,7 @@
+# nnU-Net v2 baseline environment (Python 3.10.16). Package versions read from the environment that ran the baseline.
+nnunetv2==2.8.1
+torch==2.14.1
+numpy==2.2.6
+scipy==1.15.3
+scikit-image==0.25.2
+tifffile==2025.5.10

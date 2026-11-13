@@ -1,0 +1,25 @@
+# Key packages of the training / inference / evaluation / analysis environment (Python 3.10).
+# The complete freeze of that environment is in env_torch_freeze.txt.
+# PyTorch was installed as the CUDA 13 build; install the torch wheel that matches your CUDA driver first.
+torch==2.14.1
+torchvision==0.29.1
+cellpose==4.2.1.1
+segment-anything==1.0
+numpy==2.2.6
+scipy==1.15.3
+scikit-image==0.25.2
+scikit-learn==1.7.2
+pandas==2.3.3
+statsmodels==0.15.0
+tifffile==2025.5.10
+imagecodecs==2025.3.30
+h5py==3.16.0
+pynrrd==1.1.3
+fastremap==1.20.0
+fill_voids==2.1.2
+opencv-python-headless==5.0.0.93
+matplotlib==3.10.9
+natsort==8.4.0
+roifile==2025.12.12
+# only for src/fetch_gonuclear.py (remote extraction from the Go-Nuclear archive); version not recorded
+remotezip

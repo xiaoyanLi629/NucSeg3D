@@ -1,0 +1,9 @@
+# StarDist-3D baseline and StarDist-based published tools (Tapenade, Cellos, AnyStar).
+# The environment ran TensorFlow 2.21 with legacy Keras (TF_USE_LEGACY_KERAS=1) on RTX 5090, with ptxas from
+# nvidia-cuda-nvcc-cu12 12.9 (see baselines/stardist_env.sh). Exact package versions were not captured for this
+# release: TO BE CONFIRMED by the authors from the original environment.
+tensorflow==2.21.*
+tf-keras
+stardist
+csbdeep
+nvidia-cuda-nvcc-cu12==12.9.*

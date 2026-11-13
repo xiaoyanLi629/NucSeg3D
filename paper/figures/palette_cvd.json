@@ -1,0 +1,155 @@
+{
+ "models": {
+  "normal": {
+   "min": 17.1,
+   "closest": [
+    "2D",
+    "useg"
+   ],
+   "pairs_below_15": []
+  },
+  "deuteranomaly": {
+   "min": 9.3,
+   "closest": [
+    "2D",
+    "base"
+   ],
+   "pairs_below_15": [
+    [
+     9.3,
+     "2D",
+     "base"
+    ]
+   ]
+  },
+  "protanomaly": {
+   "min": 8.5,
+   "closest": [
+    "S1",
+    "tools"
+   ],
+   "pairs_below_15": [
+    [
+     8.5,
+     "S1",
+     "tools"
+    ],
+    [
+     12.6,
+     "2D",
+     "base"
+    ]
+   ]
+  },
+  "tritanomaly": {
+   "min": 10.1,
+   "closest": [
+    "2D",
+    "useg"
+   ],
+   "pairs_below_15": [
+    [
+     10.1,
+     "2D",
+     "useg"
+    ],
+    [
+     12.2,
+     "2D",
+     "nnunet"
+    ],
+    [
+     13.1,
+     "base",
+     "nnunet"
+    ]
+   ]
+  }
+ },
+ "errors": {
+  "normal": {
+   "min": 18.3,
+   "closest": [
+    "merge",
+    "other"
+   ],
+   "pairs_below_15": []
+  },
+  "deuteranomaly": {
+   "min": 17.6,
+   "closest": [
+    "split",
+    "miss"
+   ],
+   "pairs_below_15": []
+  },
+  "protanomaly": {
+   "min": 9.5,
+   "closest": [
+    "boundary",
+    "miss"
+   ],
+   "pairs_below_15": [
+    [
+     9.5,
+     "boundary",
+     "miss"
+    ]
+   ]
+  },
+  "tritanomaly": {
+   "min": 16.6,
+   "closest": [
+    "merge",
+    "other"
+   ],
+   "pairs_below_15": []
+  }
+ },
+ "T_panel": {
+  "normal": {
+   "min": 19.4,
+   "closest": [
+    "2D",
+    "base"
+   ],
+   "pairs_below_15": []
+  },
+  "deuteranomaly": {
+   "min": 9.3,
+   "closest": [
+    "2D",
+    "base"
+   ],
+   "pairs_below_15": [
+    [
+     9.3,
+     "2D",
+     "base"
+    ]
+   ]
+  },
+  "protanomaly": {
+   "min": 12.6,
+   "closest": [
+    "2D",
+    "base"
+   ],
+   "pairs_below_15": [
+    [
+     12.6,
+     "2D",
+     "base"
+    ]
+   ]
+  },
+  "tritanomaly": {
+   "min": 17.8,
+   "closest": [
+    "2D",
+    "base"
+   ],
+   "pairs_below_15": []
+  }
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "_note": "Unified 3D-render scheme (user 2026-11-11), taken from Supplementary_Data_3D_viewer.html as displayed; used for all error-class renders and containers.",
+ "pane": "#EDECE9",
+ "page": "#F5F5F3",
+ "tab": "#DCDAD5",
+ "errors": {
+  "match": "#7C95B7",
+  "boundary": "#CF9333",
+  "split": "#674796",
+  "merge": "#B02621",
+  "other": "#BEBDB8",
+  "miss": "#287369"
+ },
+ "matched_opacity": 0.9,
+ "qualitative_instances": [
+  "#8FA3C9",
+  "#E9A99A",
+  "#8CC7BB",
+  "#B9B2D3",
+  "#D9C3A6",
+  "#9FD3E2",
+  "#C8A49B",
+  "#A9BFA0",
+  "#E3C59A",
+  "#B3B7C9"
+ ],
+ "dehalo_alpha_below": 40,
+ "reference_implementation": "paper/scripts/render3d/r8_fig6.py",
+ "iou57": "#A1CCF7",
+ "_cvd": "missed changed from the viewer's #8991A6 (CAM02-UCS distance 6.3 to matched, below the 15 rule) to deep teal #287369 (min distance >= 15 to all classes under normal and three CVD types); iou57 = #A1CCF7"
+}

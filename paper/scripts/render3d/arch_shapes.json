@@ -1,0 +1,7 @@
+{
+ "input": "1 × Z × 256 × 256",
+ "tokens": "256 × Z × 32 × 32",
+ "decoder_out": "4 × Z × 256 × 256",
+ "heads": "3 × Z × 256 × 256",
+ "source": "net3d.py (worktree orx_wt_orx_gt_227_0/src) variant dec3d; config from models/orx_t3d_r5s1_s0/model3d.json: dec_ch 256, dec_blocks 4, dec_zdil [1,2,4,8], dec_groups 16, patch_z 32; ViT-L patch 8 -> 32x32 tokens, neck 256 ch; Dec3D: 1x1x1 Conv3d in, 4 x ResBlock3D(GN-GELU-Conv3d 3x3x3 dil(z)=d, GN-GELU-Conv3d 3x3x3, + residual), GN-GELU-Conv3d 1x1x1 -> 4*64 ch zero-initialised, pixel shuffle x8; dz from decoder only, (dy, dx, cp) = 2D head + decoder residual"
+}

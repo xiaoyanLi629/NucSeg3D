@@ -1,0 +1,120 @@
+{
+ "rule": "hue of each palette.json colour kept (HLS); lightness/saturation adjusted for a black background",
+ "errors_vivid_dark": {
+  "match": "#D6D9E1",
+  "boundary": "#FA6E42",
+  "split": "#8B5E37",
+  "merge": "#4B76D2",
+  "other": "#818188",
+  "miss": "#00CCAC"
+ },
+ "qualitative_instances_vivid": [
+  "#5E8ADE",
+  "#FF623D",
+  "#5FDEC4",
+  "#816CD0",
+  "#E8A854",
+  "#3DD4FF",
+  "#D47E69",
+  "#8FC27A",
+  "#FFAF3D",
+  "#7F8ABD"
+ ],
+ "material": {
+  "ambient": 0.12,
+  "diffuse": 0.92,
+  "specular": 0.45,
+  "specular_power": 40
+ },
+ "opacity": {
+  "matched": 0.62,
+  "missed_ghost": 0.7,
+  "specimen_shell": 0.05
+ },
+ "cvd_vivid_incl_black_bg": {
+  "normal": {
+   "min": 23.6,
+   "closest": [
+    "split",
+    "other"
+   ],
+   "pairs_below_15": []
+  },
+  "deuteranomaly": {
+   "min": 15.0,
+   "closest": [
+    "match",
+    "miss"
+   ],
+   "pairs_below_15": [
+    [
+     15.0,
+     "match",
+     "miss"
+    ]
+   ]
+  },
+  "protanomaly": {
+   "min": 14.4,
+   "closest": [
+    "match",
+    "miss"
+   ],
+   "pairs_below_15": [
+    [
+     14.4,
+     "match",
+     "miss"
+    ]
+   ]
+  },
+  "tritanomaly": {
+   "min": 20.9,
+   "closest": [
+    "merge",
+    "other"
+   ],
+   "pairs_below_15": []
+  }
+ },
+ "cvd_palette_json_errors_for_reference": {
+  "normal": {
+   "min": 18.3,
+   "closest": [
+    "merge",
+    "other"
+   ],
+   "pairs_below_15": []
+  },
+  "deuteranomaly": {
+   "min": 17.6,
+   "closest": [
+    "split",
+    "miss"
+   ],
+   "pairs_below_15": []
+  },
+  "protanomaly": {
+   "min": 9.5,
+   "closest": [
+    "boundary",
+    "miss"
+   ],
+   "pairs_below_15": [
+    [
+     9.5,
+     "boundary",
+     "miss"
+    ]
+   ]
+  },
+  "tritanomaly": {
+   "min": 16.6,
+   "closest": [
+    "merge",
+    "other"
+   ],
+   "pairs_below_15": []
+  }
+ }
+}
