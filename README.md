@@ -4,10 +4,10 @@
 
 ### What volumetric fine-tuning adds to a 2D foundation model for 3D nucleus segmentation
 
-Code, benchmark splits and leakage audit for the manuscript by<br>
+Code, benchmark splits and leakage audit for the manuscript (in preparation for <i>Nature Communications</i>) by<br>
 Xiaoyan Li, Juanjuan Ye, Liwen Xu, Cuicui Jiang and Jiaoping Chen
 
-<a href="#citation"><img alt="manuscript submitted" src="https://img.shields.io/badge/manuscript-submitted-CF9333?style=flat-square"></a>
+<a href="#citation"><img alt="manuscript in preparation" src="https://img.shields.io/badge/manuscript-in%20preparation-CF9333?style=flat-square"></a>
 <img alt="Python 3.10" src="https://img.shields.io/badge/Python-3.10-7C95B7?style=flat-square&logo=python&logoColor=white">
 <img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-B02621?style=flat-square&logo=pytorch&logoColor=white">
 <img alt="built on Cellpose-SAM" src="https://img.shields.io/badge/built%20on-Cellpose--SAM-674796?style=flat-square">
@@ -343,17 +343,17 @@ Exact command lines of every reported run are recorded in the job definitions (`
 
 ## Data and weights
 
-**Status.** This is a review release. Model weights (five seeds of S1 and of the 2D control), the standardised benchmark, the train/validation/test splits and the leakage-audit lists (C1, C2) will be deposited in an archive; **DOI: to be determined (TBD)**. No data, weights or result files are included here. The source datasets are public and listed, with their original repositories, in the datasets table of the paper (Table 1 above). The per-volume leakage audit and per-volume test results are provided with the manuscript as Supplementary Data.
+**Status.** This is a pre-publication release. Model weights (five seeds of S1 and of the 2D control), the standardised benchmark, the train/validation/test splits and the leakage-audit lists (C1, C2) will be deposited in an archive; **DOI: to be determined (TBD)**. No data, weights or result files are included here. The source datasets are public and listed, with their original repositories, in the datasets table of the paper (Table 1 above). The per-volume leakage audit and per-volume test results are provided with the manuscript as Supplementary Data.
 
 ## Citation
 
-The manuscript has been submitted (citation details to be added after publication). Until then, please cite:
+The manuscript is in preparation for *Nature Communications* (citation details to be added after publication). Until then, please cite:
 
 ```bibtex
 @unpublished{li2026nucseg3d,
   title  = {What volumetric fine-tuning adds to a 2D foundation model for 3D nucleus segmentation},
   author = {Li, Xiaoyan and Ye, Juanjuan and Xu, Liwen and Jiang, Cuicui and Chen, Jiaoping},
-  note   = {Manuscript submitted},
+  note   = {Manuscript in preparation},
   year   = {2026}
 }
 ```
